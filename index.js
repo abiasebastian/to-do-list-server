@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { connectDB } = require('./src/config/db');
 const taskRoutes = require('./src/routes/taskRoutes');
+const morgan = require('morgan');
 
 const app = express();
 
@@ -11,6 +12,8 @@ app.use(cors());
 
 // Connect Database
 connectDB();
+//CONSOLE HTTP RES AND REQ
+app.use(morgan('combined'))
 
 // Routes
 app.use('/api/tasks', taskRoutes);
